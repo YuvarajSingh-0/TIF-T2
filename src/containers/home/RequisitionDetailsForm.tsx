@@ -100,9 +100,7 @@ const RequisitionDetailsForm: React.FC<{
           error={errors.gender}
           touched={touched.gender}
           value={requisitionDetails.gender}
-          selectProps={{
-            menuPlacement: "auto",
-          }}
+
         />
         <FormSelect
           label="Urgency"

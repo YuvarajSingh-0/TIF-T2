@@ -3,6 +3,7 @@ import { useTheme } from "@chakra-ui/react";
 import FromWrapper from "./FormWrapper";
 import { IFormInputProps } from "@src/interface/forms";
 import ReactSelect, { Props } from "react-select";
+import { getBody } from "../../pages/_document";
 
 interface IFormSelectProps
   extends Omit<IFormInputProps, "inputProps" | "type" | "onChange" | "onBlur"> {
@@ -27,6 +28,12 @@ const FormSelect: React.FC<IFormSelectProps> = ({
   wrapperProps = {},
   options,
 }) => {
+  // var body;
+  const [Main, setMain] = React.useState<any>(null);
+  React.useEffect(() => {
+    setMain(getBody());
+    console.log("Main", Main);
+  }, []);
   const theme = useTheme();
 
   const handleChange = (value: any) => {
@@ -56,8 +63,8 @@ const FormSelect: React.FC<IFormSelectProps> = ({
         isClearable={false}
         menuPosition="fixed"
         menuPlacement="bottom"
-
-        menuPortalTarget={document.body}
+        menuPortalTarget={Main}
+        // menuPortalTarget={Main}
         // styles
         styles={{
           container: (base) => ({
